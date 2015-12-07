@@ -1,0 +1,71 @@
+//------------------------------------------------------------------------------
+//	Base Typography
+//------------------------------------------------------------------------------
+html{
+	font-size:100%;
+}
+
+
+body{
+	font-family: "freight-sans-pro", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	color:$secondary;
+	font-size:16px;
+	line-height: 1.33;
+	font-weight:500;
+}
+
+
+//------------------------------------------------------------------------------
+//	Modular Scale
+//------------------------------------------------------------------------------
+
+@import 'modular-scale';
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-weight:900;
+	color: $heading-color;
+	margin: 1em 0 .5em 0;
+	line-height:1.2;
+	font-weight:300;
+}
+
+ol,
+ul,
+small,
+bold,
+strong,
+p{
+	margin:0 0 .5em 0;
+}
+
+h1{@extend .fs-9;}
+h2{@extend .fs-8;}
+h3{@extend .fs-7;}
+h4{@extend .fs-6;}
+h5{@extend .fs-5;}
+h6{@extend .fs-4;}
+p{@extend .fs-0;}
+small{@extend .fs--1;}
+
+
+.fs--1{font-size: ms(-1);}
+.fs-0{font-size: ms(0);}
+.fs-1{font-size: ms(1);}
+.fs-2{font-size: ms(2);}
+.fs-3{font-size: ms(3);}
+.fs-4{font-size: ms(4);}
+.fs-5{font-size: ms(5);}
+.fs-6{font-size: ms(6);}
+.fs-7{font-size: ms(7);}
+.fs-8{font-size: ms(8);}
+.fs-9{font-size: ms(9);}
+.fs-10{font-size: ms(10);}
+.fs-11{font-size: ms(11);}
+.fs-12{font-size: ms(12);}

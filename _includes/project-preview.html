@@ -1,6 +1,6 @@
-<ul class="portfolio-items">
+<ul class="portfolio">
 	{% for post in site.categories.projects %}
-		<li>
+		<li class="portfolio-item">
 			<img class="portfolio-item--image" src="{{ post.banner | prepend: site.baseurl }}" alt="{{ post.title }}" />
 			<h2 class="portfolio-item--title h5"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
 			<p class="portfolio-item--category">{{ post.projectType }}</p>
