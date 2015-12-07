@@ -1,0 +1,25 @@
+
+# Created by https://www.gitignore.io/api/sass,jekyll
+
+### Sass ###
+.sass-cache/
+*.css.map
+_dev/
+
+
+### Jekyll ###
+_site/
+.sass-cache/
+.jekyll-metadata
+
+### Gulp ###
+# Logs
+logs
+*.log
+npm-debug.log*
+node_modules/
+.npm
+.node_repl_history
+package.json
+gulpfile.js
+
