@@ -30,3 +30,6 @@ compress_html:
 
 # Build settings
 markdown: kramdown
+
+# Permalink settings
+permalink: /:categories/:title/

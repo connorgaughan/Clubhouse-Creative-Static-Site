@@ -9,7 +9,7 @@ html{
 body{
 	font-family: "freight-sans-pro", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	color:$secondary;
+	color:$thunder;
 	font-size:16px;
 	line-height: 1.33;
 	font-weight:500;
@@ -23,12 +23,7 @@ body{
 @import 'modular-scale';
 
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6{
+h1, h2, h3, h4, h5, h6{
 	font-weight:900;
 	color: $heading-color;
 	margin: 1em 0 .5em 0;
@@ -36,12 +31,7 @@ h6{
 	font-weight:300;
 }
 
-ol,
-ul,
-small,
-bold,
-strong,
-p{
+ol, ul, small, bold, strong, p{
 	margin:0 0 .5em 0;
 }
 

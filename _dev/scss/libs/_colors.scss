@@ -2,17 +2,20 @@
 //	Color Settings
 //------------------------------------------------------------------------------
 
-$primary							: orange;
-$secondary							: #737373;
-$tertiary							: #969696;
-$orange								: #e95e3f;
-$teal 								: #84c6b7;
-$white 								: #ffffff;
+// Typographic Colors
+$thunder							: #292628;
+$hippie								: #5DA6B6;
+
+// Mood Colors
+$mint									: #BAEAF3;
+$royal								: #593BB7;
+$white								: #fff;
+
 
 
 //------------------------------------------------------------------------------
 // Color Variable Roles
 //------------------------------------------------------------------------------
 
-$base-color							: $primary;
-$heading-color						: $primary;
+$base-color							: $thunder;
+$heading-color					: $thunder;

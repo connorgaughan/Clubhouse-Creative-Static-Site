@@ -1,13 +1,12 @@
 //------------------------------------------------------------------------------
-//  Grid Defaults - 1440px Wide
+//  Grid Defaults - 1680px Wide
 //------------------------------------------------------------------------------
 
-$column-width: 100px;
-$gutter-width: 20px;
+$column-width: 110px;
+$gutter-width: 40px;
 $columns: 12;
-
-
-
+$max-width: 1680px;
+$total-width: 100%;
 
 
 //------------------------------------------------------------------------------
@@ -18,33 +17,23 @@ $columns: 12;
   @return ($column-width * $columns) + ($gutter-width * $columns);
 }
 
-
-
-
-
-//------------------------------------------------------------------------------
-//  Total Width for Fluid Layouts
-//------------------------------------------------------------------------------
-
-$total-width: 100%;
-
-
-
-
-
 //------------------------------------------------------------------------------
 //  Rows
 //------------------------------------------------------------------------------
 
-@mixin row($columns:$columns) {
-  @include clearfix();
-  display: block;
-  width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
-  margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
+@mixin flexrow{
+  @include flexbox;
+  width: $total-width;
+  max-width: $max-width;
 }
 
-
-
+@mixin row{
+  @include clearfix();
+  display: block;
+  width: $total-width;
+  max-width: $max-width;
+  margin: 0 auto;
+}
 
 
 //------------------------------------------------------------------------------
@@ -52,36 +41,26 @@ $total-width: 100%;
 //------------------------------------------------------------------------------
 
 @mixin column($x,$columns:$columns) {
-  display: inline;
+  display: inline-block;
   float: left;
   width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
   margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 
-
-
+@mixin flexcolumn($x,$columns:$columns){
+  @include flex-basis($total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns)));
+  margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
 
 
 //------------------------------------------------------------------------------
-//  Push
+//  Push & Pull
 //------------------------------------------------------------------------------
 
 @mixin push($offset:1) {
   margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 
-
-
-
-
-//------------------------------------------------------------------------------
-// Pull
-//------------------------------------------------------------------------------
-
 @mixin pull($offset:1) {
   margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
-
-
-
-
