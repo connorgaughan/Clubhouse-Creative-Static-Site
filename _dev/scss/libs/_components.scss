@@ -4,6 +4,18 @@
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
+.main{
+  @include row;
+  @media screen and (min-height:600px){
+    height:85vh;
+  }
+  @media screen and (min-width:40em){
+    height:75vh;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
 // Site Title
 .site-title{
 	color:$hippie;
@@ -12,18 +24,20 @@
   letter-spacing:.05em;
   text-align:center;
   font-size: ms(7);
+  padding-top:175px;
 
   .break{
     display:none;
   }
 
-  @media screen and (min-width:40em){
+  @media screen and (min-width:40em) and (min-height:600px) {
     font-size: ms(12);
     line-height:1;
     text-align:left;
     position:absolute;
     top:150px;
     left: 7vw;
+    padding-top:0;
 
     .break{
       display:block;
@@ -85,7 +99,7 @@
     }
   }
 
-  @media screen and (min-width:40em){
+  @media screen and (min-width:40em) and (min-height:600px) {
     height:400px;
     width:400px;
     top:100px;
@@ -97,19 +111,34 @@
 // -----------------------------------------------------------------------------
 // Page Content
 // -----------------------------------------------------------------------------
-.page-content{
+.content{
   @include row;
-  @include clearfix;
   padding:5vw;
 
   @media screen and (min-width:40em){
-    padding:80vh 5vw 5vw 5vw;
+    padding:0 5vw 5vw 5vw;
   }
 
-  &--intro{
-    @include column(10);
-    @include push(1);
-    @include pull(1);
+  &-intro{
+    @include flexrow;
+    @include justify-content(center);
+
+    p{
+      @include flexcolumn(10);
+      font-size: ms(0);
+      font-weight: 600;
+      color: $hippie;
+      mix-blend-mode: multiply;
+
+      @media screen and (min-width:40em){
+        @include flexcolumn(6);
+        font-size: ms(1);
+      }
+    }
+  }
+
+  &-main{
+    background:$white;
   }
 }
 

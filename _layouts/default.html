@@ -6,11 +6,17 @@ layout: compress
   {% include head.html %}
   <body>
     {% include header.html %}
-    <div class="page-content">
-      <div class="page-content--intro">
+    <div class="content">
+
+      {% if page.layout == 'home' %}
+      <div class="content-intro">
         <p>Clubhouse Creative is a part-time gig. The majority of us at Clubhouse have full time design jobs and we use this as an outlet for creativity, to have fun, and most importantly to work with like-minded people who are driven and passionate about what they do &emdash; just like us.</p>
       </div>
-      {{ content }}
+      {% endif %}
+
+      <div class="content-main">
+        {{ content }}
+      </div>
     </div>
     {% include footer.html %}
   </body>
