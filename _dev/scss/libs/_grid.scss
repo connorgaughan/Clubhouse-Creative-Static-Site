@@ -9,7 +9,7 @@
 $column-width: 100px;
 $gutter-width: 40px;
 $columns: 12;
-$max-width: 1400px;
+$max-width: 1280px;
 $total-width: 100%;
 
 
@@ -30,6 +30,7 @@ $total-width: 100%;
   @include flexbox;
   width: $total-width;
   max-width: $max-width;
+  margin:0 auto;
 }
 
 @mixin flexcolumn($x,$columns:$columns){

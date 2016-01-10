@@ -1,9 +1,12 @@
 <ul class="portfolio">
 	{% for post in site.categories.projects %}
-		<li class="portfolio-item">
+		<li class="portfolio-item {{ post.class }}" image-align="{{ post.image-align }}" {% if post.image-offset %} image-offset="{{ post.image-offset }}" {% endif %}>
 			<img class="portfolio-item--image" src="{{ post.banner | prepend: site.baseurl }}" alt="{{ post.title }}" />
-			<h2 class="portfolio-item--title h5"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-			<p class="portfolio-item--category">{{ post.projectType }}</p>
+			<div class="portfolio-item--content">
+				<h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+				<p class="excerpt">{{ post.excerpt }}</p>
+				<p class="category">{{ post.projectType }}</p>
+			</div>
 		</li>
 	{% endfor %}
 </ul>

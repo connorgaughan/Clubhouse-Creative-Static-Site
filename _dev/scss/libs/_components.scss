@@ -5,12 +5,25 @@
 
 // -----------------------------------------------------------------------------
 .main{
-  @include row;
-  @media screen and (min-height:600px){
-    height:85vh;
-  }
-  @media screen and (min-width:40em){
-    height:75vh;
+
+  &-intro{
+    @include flexrow;
+    @include justify-content(center);
+
+    p{
+      font-family: "freight-text-pro", sans-serif;
+      @include flexcolumn(10);
+      @include align-self(flex-end);
+      font-size: ms(1);
+      line-height: 1.5;
+      color: $hippie;
+      mix-blend-mode: multiply;
+
+      @media screen and (min-width:40em){
+        @include flexcolumn(6);
+        font-size: ms(2);
+      }
+    }
   }
 }
 
@@ -24,20 +37,22 @@
   letter-spacing:.05em;
   text-align:center;
   font-size: ms(7);
-  padding-top:175px;
+  padding:175px 0 0 0;
 
   .break{
     display:none;
+  }
+
+  @media screen and (min-width:40em){
+    padding:175px 0 100px 0;
   }
 
   @media screen and (min-width:40em) and (min-height:600px) {
     font-size: ms(12);
     line-height:1;
     text-align:left;
-    position:absolute;
-    top:150px;
-    left: 7vw;
     padding-top:0;
+    overflow:hidden;
 
     .break{
       display:block;
@@ -50,12 +65,16 @@
       position:relative;
     }
 
+    &-first{
+      left:4vw;
+    }
+
     &-second{
-      left:10vw;
+      left:12vw;
     }
 
     &-third{
-      left:-9vw;
+      left:-2vw;
     }
   }
 }
@@ -70,8 +89,8 @@
 // Logo
 .logo{
   display:block;
-  height:200px;
-  width:200px;
+  height:400px;
+  width:400px;
   position:fixed;
   top:10px;
   left:50%;
@@ -82,27 +101,6 @@
 
   .svg{
     transition: fill 300ms ease-in-out;
-  }
-
-  &[done-scrolling="false"]{
-    .svg{
-      fill: $white;
-      opacity:.75;
-    }
-  }
-
-  &[done-scrolling="true"]{
-    .svg{
-      fill: $thunder;
-      opacity:1;
-      mix-blend-mode: difference;
-    }
-  }
-
-  @media screen and (min-width:40em) and (min-height:600px) {
-    height:400px;
-    width:400px;
-    top:100px;
   }
 }
 
@@ -115,30 +113,9 @@
   @include row;
   padding:5vw;
 
-  @media screen and (min-width:40em){
-    padding:0 5vw 5vw 5vw;
-  }
-
-  &-intro{
-    @include flexrow;
-    @include justify-content(center);
-
-    p{
-      @include flexcolumn(10);
-      font-size: ms(0);
-      font-weight: 600;
-      color: $hippie;
-      mix-blend-mode: multiply;
-
-      @media screen and (min-width:40em){
-        @include flexcolumn(6);
-        font-size: ms(1);
-      }
-    }
-  }
-
   &-main{
     background:$white;
+    box-shadow: 0 8px 32px rgba(0,0,0, .35);
   }
 }
 
@@ -148,9 +125,121 @@
 // Portfolio Content
 // -----------------------------------------------------------------------------
 .portfolio{
-	@include flexbox;
-	@include justify-content(center);
-	&-item{
-		@include flexcolumn(4);
-	}
+  counter-reset: section;
+}
+
+.portfolio-item{
+	@include row;
+  padding:5vh 0;
+  position:relative;
+
+  &:before{
+    counter-increment: section;
+    content: counter(section);
+    display:block;
+    font-size: ms(18);
+    font-family: "freight-text-pro", sans-serif;
+    font-style:italic;
+    color:$white;
+    opacity:.3;
+    position:absolute;
+    bottom:30%;
+    z-index:-1;
+  }
+
+  &[image-align="right"]:before{
+    right:-15%;
+  }
+
+  &[image-align="left"]:before{
+    left:-15%;
+  }
+
+  @media screen and (min-width:40em){
+    &:before{
+      bottom:20%;
+      font-size:ms(22);
+    }
+      &[image-align="right"]:before{
+      right:-10%;
+    }
+
+    &[image-align="left"]:before{
+      left:-10%;
+    }
+  }
+
+  &--content{
+    text-align:center;
+    padding:0 20px;
+
+    h2{
+      font-weight:900;
+      font-size: ms(4);
+
+      a{
+        text-decoration:none;
+        color: $deeppurple;
+      }
+    }
+
+    .category{
+      position:absolute;
+      transform: rotate(-90deg);
+    }
+  }
+
+  @media screen and (min-width:40em){
+
+    &--content{
+      text-align:left;
+      padding:0;
+
+      h2{
+        font-size: ms(9);
+      }
+    }
+
+    &[image-align="right"]{
+      .portfolio-item--image,
+      .portfolio-item--content{
+        float:right;
+      }
+    }
+
+    &[image-offset="right"]{
+      .portfolio-item--image{
+        margin-right:-5%;
+      }
+    }
+
+    &[image-align="left"]{
+      .portfolio-item--image,
+      .portfolio-item--content{
+        float:left;
+      }
+    }
+
+    &[image-offset="left"]{
+      .portfolio-item--image{
+        margin-left:-5%;
+      }
+    }
+
+    .portfolio-item{
+      &--image{
+        display:block;
+        width:60%;
+        margin:0;
+        padding:0;
+      }
+
+      &--content{
+        display:block;
+        width:40%;
+        margin:0;
+        padding:10% 25px;
+      }
+    }
+  }
 }
