@@ -11,13 +11,14 @@
     @include justify-content(center);
 
     p{
-      font-family: "freight-text-pro", sans-serif;
       @include flexcolumn(10);
       @include align-self(flex-end);
       font-size: ms(1);
       line-height: 1.5;
+      font-weight:400;
       color: $hippie;
       mix-blend-mode: multiply;
+      position:relative;
 
       @media screen and (min-width:40em){
         @include flexcolumn(6);
@@ -98,10 +99,6 @@
   mix-blend-mode: overlay;
   fill: $white;
   opacity:.75;
-
-  .svg{
-    transition: fill 300ms ease-in-out;
-  }
 }
 
 
@@ -133,42 +130,49 @@
   padding:5vh 0;
   position:relative;
 
-  &:before{
+  // Psuedo Numbers
+  // ---------------------------------------------------------------------------
+  &--counter{
     counter-increment: section;
     content: counter(section);
     display:block;
     font-size: ms(18);
-    font-family: "freight-text-pro", sans-serif;
-    font-style:italic;
+    font-weight:900;
     color:$white;
     opacity:.3;
     position:absolute;
-    bottom:30%;
+    bottom:0px;
     z-index:-1;
   }
 
-  &[image-align="right"]:before{
-    right:-15%;
+  &[image-align="right"]{
+    .portfolio-item--counter{
+      right:-15%;
+    }
   }
 
-  &[image-align="left"]:before{
-    left:-15%;
+  &[image-align="left"]{
+    .portfolio-item--counter{
+      left:-15%;
+    }
   }
 
   @media screen and (min-width:40em){
-    &:before{
-      bottom:20%;
-      font-size:ms(22);
-    }
-      &[image-align="right"]:before{
-      right:-10%;
+    &[image-align="right"]{
+      .portfolio-item--counter{
+        right:-10%;
+      }
     }
 
-    &[image-align="left"]:before{
-      left:-10%;
+    &[image-align="left"]{
+      .portfolio-item--counter{
+        left:-10%;
+      }
     }
   }
 
+  // Content Types - Image V.S. Copy
+  // ---------------------------------------------------------------------------
   &--content{
     text-align:center;
     padding:0 20px;
@@ -176,6 +180,7 @@
     h2{
       font-weight:900;
       font-size: ms(4);
+      margin:.25em 0 1em 0;
 
       a{
         text-decoration:none;
@@ -184,20 +189,37 @@
     }
 
     .category{
-      position:absolute;
-      transform: rotate(-90deg);
+      font-family: "sofia-pro",sans-serif;
+      text-transform: uppercase;
+      font-weight:500;
+      letter-spacing: .5em;
+      font-size: ms(-1);
     }
   }
 
   @media screen and (min-width:40em){
 
     &--content{
+      display:block;
       text-align:left;
-      padding:0;
+      width:45%;
+      margin:0;
+      padding:10% 0 10% 10%;
 
       h2{
-        font-size: ms(9);
+        font-size: ms(7);
       }
+
+      .excerpt{
+        font-size: ms(1);
+      }
+    }
+
+    &--image{
+      display:block;
+      width:55%;
+      margin:0;
+      padding:0;
     }
 
     &[image-align="right"]{
@@ -223,22 +245,6 @@
     &[image-offset="left"]{
       .portfolio-item--image{
         margin-left:-5%;
-      }
-    }
-
-    .portfolio-item{
-      &--image{
-        display:block;
-        width:60%;
-        margin:0;
-        padding:0;
-      }
-
-      &--content{
-        display:block;
-        width:40%;
-        margin:0;
-        padding:10% 25px;
       }
     }
   }

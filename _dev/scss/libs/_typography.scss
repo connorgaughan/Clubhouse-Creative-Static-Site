@@ -10,12 +10,11 @@ html{
 
 
 body{
-	font-family: "freight-sans-pro", sans-serif;
+	font-family: "adobe-caslon-pro",serif;
 	-webkit-font-smoothing: antialiased;
-	color:$thunder;
+	color:$slate;
 	font-size:16px;
 	line-height: 1.33;
-	font-weight:300;
 }
 
 
@@ -23,11 +22,13 @@ body{
 //	Modular Scale
 //------------------------------------------------------------------------------
 h1, h2, h3, h4, h5, h6{
+	font-family: "sofia-pro",sans-serif;
 	font-weight:900;
 	color: $heading-color;
 	margin: 1em 0 .5em 0;
 	line-height:1.2;
 	font-weight:300;
+	letter-spacing:-0.01em;
 }
 
 ol, ul, small, bold, strong, p{

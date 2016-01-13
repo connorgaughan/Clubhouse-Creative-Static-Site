@@ -2,12 +2,28 @@
 //	Global Styles
 //------------------------------------------------------------------------------
 
-body {
-	@include clearfix;
+html{
 	height:100%;
 	width: 100%;
+
+	&.wf-loading body{
+		opacity:0;
+		position:relative;
+		top:5vh;
+		transition:opacity 300ms ease-in-out, top 400ms ease-in-out;
+	}
+
+	&.wf-active body{
+		opacity:1;
+		top:0;
+	}
+
+}
+
+body {
+	@include clearfix;
 	background-image: linear-gradient(130deg, lighten($mint, 15%), $mint, darken($mint, 15%), lighten($royal, 15%), $royal, darken($royal, 15%));
-	background-size: 1000% 1000%;
+	background-size: 1200% 1200%;
 	animation: AnimationName 30s ease infinite;
 	overflow-x: hidden;
 }

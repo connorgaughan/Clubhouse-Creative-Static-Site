@@ -1,36 +1,43 @@
-//get original height and margin-top outside scroll
-// var logo        = $('.logo'),
-//     imageHeight = parseInt( logo.css('height') ),
-//     imageWidth  = parseInt( logo.css('width') ),
-//     imageTop    = parseInt( logo.css('top') ),
-//     stopHeight  = imageHeight / 8,
-//     stopWidth   = imageWidth / 8,
-//     stopTop     = imageTop / 8;
+// Append the counter span to each element
+$('.portfolio-item').each(function(i) {
+   $(this).append('<span class="portfolio-item--counter">' + (++i) + '</span>');
+});
 
-// $(window).scroll(function(e) {
+// Parallax those counters
+$('.portfolio-item--counter').each(function(){
+	var counter 						= $(this);
 
-//   var windowScroll  = $(window).scrollTop(),
-//       newHeight     = imageHeight - windowScroll,
-//       newWidth      = imageWidth - windowScroll,
-//       newTop        = imageTop - windowScroll;
+	$(window).scroll(function() {
+		var windowScroll  		= $(window).scrollTop(),
+				counterScrolled 	= windowScroll / 35,
+				counterPosition 	= counterScrolled + '%';
 
-//   if ( newHeight >= stopHeight && newWidth >= stopWidth ){
-//     logo.css("height", newHeight);
-//     logo.css("width", newWidth);
+		counter.css({ bottom: counterPosition });
+	});
+});
 
-//     if (newTop >= stopTop){
-//       logo.css("top", newTop)
-//     }
-//   } else {
-//     logo.css("height", stopHeight);
-//     logo.css("width", stopWidth);
-//     logo.css("top", stopTop)
+//Parallax homepage stuff
+var intro								= $('.main-intro p'),
+		headlineOne 				= $('.site-title-first'),
+		headlineTwo 				= $('.site-title-second'),
+		headlineThree 			= $('.site-title-third');
 
-//   }
+$(window).scroll(function() {
+	var windowScroll  		= $(window).scrollTop(),
+			introScrolled			= windowScroll / 15,
+			headlineScrolled	= windowScroll / 70,
+			introPosition 		= introScrolled,
+			hOnePosition 			= 4 + headlineScrolled + 'vw',
+			hTwoPosition 			= 12 - headlineScrolled + 'vw',
+			hThreePosition 		= -2 + headlineScrolled + 'vw';
 
-//   if ( logo.height() <= 80 ){
-//     logo.attr('done-scrolling', 'true');
-//   } else {
-//     logo.attr('done-scrolling', 'false');
-//   }
-// });
+	if(introPosition <= 55){
+		intro.css({ marginBottom: '-' + introPosition + '%' });
+	} else {
+		intro.css({ marginBottom: '-55%'});
+	}
+	headlineOne.css({ left: hOnePosition });
+	headlineTwo.css({ left: hTwoPosition });
+	headlineThree.css({ left: hThreePosition });
+	console.log(introPosition);
+});
